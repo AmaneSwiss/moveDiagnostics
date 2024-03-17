@@ -10,12 +10,12 @@ if [[ "$run_diag" == "y" ]]; then
 fi
 clear
 
-# Display files matching *diagnostics* in /boot/logs
-files=(/boot/logs/*diagnostics*)
-if [ ${#files[@]} -eq 1 ] && [ ${files[0]} == "/boot/logs/*diagnostics*" ]; then
+# Display files matching *diagnostics*.zip in /boot/logs
+files=(/boot/logs/*diagnostics*.zip)
+if [ ${#files[@]} -eq 1 ] && [ ${files[0]} == "/boot/logs/*diagnostics*.zip" ]; then
   echo "No diagnostics files found. Running diagnostics..."
   diagnostics
-  files=(/boot/logs/*diagnostics*)
+  files=(/boot/logs/*diagnostics*.zip)
 fi
 clear
 
@@ -64,7 +64,7 @@ fi
 
 # Copy the selected diagnostics file to the chosen path
 cp "${files[$file_index]}" "$target_path"
-chown 1000:100 "$target_path"
-chmod 777 "$target_path"
+chown 1000:100 "$target_path/*diagnostics*.zip"
+chmod 777 "$target_path/*diagnostics*.zip"
 clear
 echo "File ${files[$file_index]} copied to $target_path successfully."
