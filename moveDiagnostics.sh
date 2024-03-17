@@ -66,7 +66,7 @@ fi
 cp "${files[$file_index]}" "$target_path"
 for file in $target_path/*diagnostics*.zip; do
   chown 99:100 "$file"
-  chmod 777 "$file"
+  chmod 666 "$file"
 done
 clear
 echo "File ${files[$file_index]} copied to $target_path successfully."
