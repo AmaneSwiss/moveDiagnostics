@@ -65,7 +65,7 @@ fi
 # Copy the selected diagnostics file to the chosen path
 cp "${files[$file_index]}" "$target_path"
 for file in $target_path/*diagnostics*.zip; do
-  chown 1000:100 "$file"
+  chown 99:100 "$file"
   chmod 777 "$file"
 done
 clear
