@@ -11,11 +11,12 @@ clear
 
 # Display files matching *diagnostics* in /boot/logs
 files=(/boot/logs/*diagnostics*)
-if [ ${#files[@]} -eq 0 ]; then
+if [ ${#files[@]} -eq 1 ] && [ ${files[0]} == "/boot/logs/*diagnostics*" ]; then
   echo "No diagnostics files found. Running diagnostics..."
   diagnostics
   files=(/boot/logs/*diagnostics*)
 fi
+clear
 
 echo "Diagnostics files found:"
 for i in "${!files[@]}"; do
@@ -24,13 +25,15 @@ done
 echo ""
 
 # Ask which diagnostics file to move
-echo "Which diagnostics file do you want to move? Enter the number:"
-read -r file_choice
-let file_index=file_choice-1
-
-if [ -z "${files[$file_index]}" ]; then
-  echo "Invalid choice. Exiting."
-  exit 1
+if [ ${#files[@]} -gt 1 ]; then
+    echo "Which diagnostics file do you want to move? Enter the number:"
+    read -r file_choice
+    let file_index=file_choice-1
+    
+    if [ -z "${files[$file_index]}" ]; then
+      echo "Invalid choice. Exiting."
+      exit 1
+    fi
 fi
 clear
 
