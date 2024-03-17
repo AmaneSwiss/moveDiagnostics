@@ -25,9 +25,9 @@ for i in "${!files[@]}"; do
 done
 echo ""
 
-# Ask which diagnostics file to move
+# Ask which diagnostics file to copy
 if [ ${#files[@]} -gt 1 ]; then
-    echo "Which diagnostics file do you want to move? Enter the number:"
+    echo "Which diagnostics file do you want to copy? Enter the number:"
     read -r file_choice
     let file_index=file_choice-1
     
