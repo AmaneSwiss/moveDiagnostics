@@ -5,6 +5,7 @@ clear
 echo "Do you want to run the 'diagnostics' command? (y/n)"
 read -r run_diag
 if [[ "$run_diag" == "y" ]]; then
+  clear
   diagnostics
 fi
 clear
